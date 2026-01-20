@@ -1,0 +1,6 @@
+@CarGate_HostAddress = http://localhost:5105
+
+GET {{CarGate_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
