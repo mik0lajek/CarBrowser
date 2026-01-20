@@ -1,0 +1,18 @@
+﻿<Window x:Class="CarBrowser.Windows.SplashScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarBrowser.Windows"
+        mc:Ignorable="d"
+        Title="SplashScreen" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="None">
+    <Window.Background>
+        <ImageBrush ImageSource="/Windows/bg1.png" Stretch="Uniform"/>
+    </Window.Background>
+    <Grid>
+        <Label Content="CarBrowser" FontSize="32" FontFamily="Lato" FontWeight="Bold" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Panel.ZIndex="1" Foreground="White"/>
+        <Label Content="Autorzy: Dawid Zwolak, Mikołaj Sosiński" FontSize="18" FontFamily="Lato" FontWeight="Normal" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top" Panel.ZIndex="1" Foreground="White" RenderTransformOrigin="0.478,1.582"/>
+        <Label x:Name="statusLabel" Content="..." FontSize="20" FontFamily="Arial Black" FontWeight="Bold" HorizontalAlignment="Left" Margin="725,94,0,0" VerticalAlignment="Top" Panel.ZIndex="1"/>
+        <Rectangle HorizontalAlignment="Center" Height="126" Margin="0,45,0,0" Stroke="Black" VerticalAlignment="Top" Width="800" Fill="#B2171717"/>
+    </Grid>
+</Window>
