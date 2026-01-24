@@ -10,7 +10,6 @@ namespace CarBrowser
 
         protected override void OnStartup(StartupEventArgs e)
         {
-
             base.OnStartup(e);
 
             Configuration = new ConfigurationBuilder()
@@ -18,11 +17,8 @@ namespace CarBrowser
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .Build();
 
-
             var splash = new Windows.SplashScreen();
-            splash.Show();
-
-
+            splash.ShowDialog();
         }
     }
 }

@@ -1,12 +1,56 @@
-﻿<Window x:Class="CarBrowser.MainWindow"
+﻿<Window x:Class="CarBrowser.Windows.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CarBrowser"
+        xmlns:views="clr-namespace:CarBrowser.Views"
+        xmlns:viewModels="clr-namespace:CarBrowser.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="CarBrowser"
+        Height="600"
+        Width="1000"
+        WindowStartupLocation="CenterScreen">
 
-    </Grid>
+
+    <DockPanel>
+
+        <!-- MENU -->
+        <Menu DockPanel.Dock="Top" Height="30">
+            <MenuItem Header="Akcja" VerticalAlignment="Center" Height="30">
+                <MenuItem Header="Wyloguj"
+                          Command="{Binding ShowLoginCommand}" />
+                <Separator />
+                <MenuItem Header="Filtrowanie"
+                          Command="{Binding ShowFilteringCommand}" />
+                <MenuItem Header="Dostępne pliki"
+                          Command="{Binding ShowFilesCommand}" />
+                <Separator />
+                <MenuItem Header="Zamknij"
+                          Command="{Binding ExitCommand}" />
+            </MenuItem>
+
+            <MenuItem Header="Informacje">
+                <MenuItem Header="Autorzy"
+                          Command="{Binding ShowAuthorsCommand}"> 
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Icons/info.png" 
+                               Width="16" 
+                               Height="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <!-- ZMIENNA ZAWARTOŚĆ -->
+        <ContentControl Content="{Binding MainContent}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type viewModels:LoginViewModel}">
+                    <views:LoginView />
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
+
+
+    </DockPanel>
 </Window>
+
