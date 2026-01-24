@@ -1,15 +1,33 @@
+using CarGate.Configuration;
+using CarGate.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.Configure<CepikEndpoints>(
+    builder.Configuration.GetSection("Cepik:Endpoints"));
+
+builder.Services.AddHttpClient("CepikClient", (sp, client) =>
+{
+    var config = sp.GetRequiredService<IConfiguration>();
+    client.BaseAddress = new Uri(config["Cepik:BaseUrl"]);
+});
+
+builder.Services.AddScoped<CepikSystemService>();
+builder.Services.AddScoped<VoivodeshipDictionaryService>();
+builder.Services.AddScoped<FilteringService>();
+builder.Services.AddScoped<FilesService>();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
+
+
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
