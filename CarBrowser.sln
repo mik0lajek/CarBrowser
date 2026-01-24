@@ -7,8 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarBrowser", "CarBrowser\Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarGate", "CarGate\CarGate.csproj", "{E8BB9213-2DC4-33E5-D3C2-101DDFDA2B75}"
 EndProject
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarLibrary", "CarLibrary\CarLibrary.csproj", "{31632F66-4DAA-4648-8CF4-F4138E0C4C43}"
 EndProject
+=======
+>>>>>>> 38acefd1c589abdc023a300cb914596113edd5ff
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +26,13 @@ Global
 		{E8BB9213-2DC4-33E5-D3C2-101DDFDA2B75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8BB9213-2DC4-33E5-D3C2-101DDFDA2B75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8BB9213-2DC4-33E5-D3C2-101DDFDA2B75}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{31632F66-4DAA-4648-8CF4-F4138E0C4C43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{31632F66-4DAA-4648-8CF4-F4138E0C4C43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31632F66-4DAA-4648-8CF4-F4138E0C4C43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31632F66-4DAA-4648-8CF4-F4138E0C4C43}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+>>>>>>> 38acefd1c589abdc023a300cb914596113edd5ff
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
