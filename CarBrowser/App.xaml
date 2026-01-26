@@ -11,10 +11,11 @@
             <views:LoginView />
         </DataTemplate>
 
-        <!-- <DataTemplate DataType="{x:Type viewModels:FilteringViewModel}">
+       <DataTemplate DataType="{x:Type viewModels:FilteringViewModel}">
             <views:FilteringView />
         </DataTemplate>
-
+        
+        <!--
         <DataTemplate DataType="{x:Type viewModels:FilesViewModel}">
             <views:FilesView />
         </DataTemplate> -->

@@ -8,6 +8,21 @@ namespace CarBrowser
     {
         public static IConfiguration Configuration { get; private set; }
 
+        public App()
+        {
+            AppDomain.CurrentDomain.UnhandledException += (s, e) =>
+            {
+                MessageBox.Show(e.ExceptionObject.ToString(), "UNHANDLED");
+            };
+
+            DispatcherUnhandledException += (s, e) =>
+            {
+                MessageBox.Show(e.Exception.ToString(), "DISPATCHER");
+                e.Handled = true;
+            };
+        }
+
+
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);

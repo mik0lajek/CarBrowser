@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="CarBrowser.Views.FilteringView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:tools="clr-namespace:CarBrowser.Tools"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib">
+             
+
+
+    <UserControl.Resources>
+        <tools:BoolToTextConverter x:Key="BoolToTextConverter"/>
+        <tools:InverseBoolConverter x:Key="InverseBoolConverter"/>
+    </UserControl.Resources>
+
+
+
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1.5*"/>
+        </Grid.ColumnDefinitions>
+        
+        <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto" Margin="10">
+            <StackPanel>
+
+                <TextBlock Text="{Binding LoggedUser}" FontWeight="Bold" Margin="0 0 0 20"/>
+
+                <TextBlock Text="Wymagane" FontSize="16" FontWeight="Bold"/>
+
+                <ComboBox ItemsSource="{Binding Voivodeship}"
+                          SelectedItem="{Binding SelectedVoivodeship}"
+                          Width="200"/>
+
+                <DatePicker SelectedDate="{Binding DateFrom}"
+                    DisplayDateStart="{Binding MinAllowedDate, Mode=OneWay}"
+                    DisplayDateEnd="{Binding MaxAllowedDate, Mode=OneWay}"
+                    Width="200" Margin="0 10 0 0"/>
+
+
+                <TextBlock Text="Opcjonalne" FontSize="16" FontWeight="Bold" Margin="0 20 0 0"/>
+
+                <DatePicker SelectedDate="{Binding DateTo}"
+            DisplayDateStart="{Binding DateFrom, TargetNullValue={x:Static sys:DateTime.Today}}"
+            DisplayDateEnd="{Binding MaxAllowedDate, Mode=OneWay}"
+            Width="200" Margin="0 10 0 0"/>
+
+
+
+                <CheckBox Content="Registered"
+                          IsChecked="{Binding IsRegistered}"
+                          Margin="0 10 0 0"/>
+
+                <ComboBox ItemsSource="{Binding PaginationOptions}"
+                          SelectedItem="{Binding SelectedPagination}"
+                          Width="200" Margin="0 10 0 0"/>
+
+                <Button Content="{Binding IsSearching, Converter={StaticResource BoolToTextConverter}}"
+                    Command="{Binding SearchCommand}"
+                    IsEnabled="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}"
+                    Width="200" Margin="0 20 0 0"/>
+
+
+
+            </StackPanel>
+        </ScrollViewer>
+        
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" Margin="10">
+            <ListBox ItemsSource="{Binding Vehicles}"
+                     SelectedItem="{Binding SelectedVehicle}"
+                     DisplayMemberPath="Display"/>
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto" Margin="10">
+            <ItemsControl ItemsSource="{Binding VehicleDetails}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Key}" FontWeight="Bold" Width="200"/>
+                            <TextBlock Text="{Binding Value}" Margin="20,0,0,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+    </Grid>
+</UserControl>
+

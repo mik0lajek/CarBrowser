@@ -19,9 +19,9 @@ public static class VehiclesQueryBuilder
             sb.Append($"tylko-zarejestrowane={f.OnlyRegistered.Value.ToString().ToLower()}&");
 
         if (f.Limit.HasValue)
-            sb.Append($"page[size]={f.Limit.Value}&");
+            sb.Append($"limit={f.Limit.Value}&");
 
-        sb.Append("page[number]=1");
+        sb.Append("page=1");
 
         return sb.ToString();
     }

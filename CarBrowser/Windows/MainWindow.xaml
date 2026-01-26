@@ -13,8 +13,6 @@
 
 
     <DockPanel>
-
-        <!-- MENU -->
         <Menu DockPanel.Dock="Top" Height="30">
             <MenuItem Header="Akcja" VerticalAlignment="Center" Height="30">
                 <MenuItem Header="Wyloguj"
@@ -41,7 +39,6 @@
             </MenuItem>
         </Menu>
 
-        <!-- ZMIENNA ZAWARTOŚĆ -->
         <ContentControl Content="{Binding MainContent}">
             <ContentControl.Resources>
                 <DataTemplate DataType="{x:Type viewModels:LoginViewModel}">

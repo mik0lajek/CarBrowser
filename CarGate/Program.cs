@@ -21,6 +21,7 @@ builder.Services.AddScoped<CepikSystemService>();
 builder.Services.AddScoped<VoivodeshipDictionaryService>();
 builder.Services.AddScoped<FilteringService>();
 builder.Services.AddScoped<FilesService>();
+builder.Services.AddScoped<VehicleDetailsService>();
 
 var app = builder.Build();
 
