@@ -23,19 +23,19 @@
 
                 <MenuItem Header="Akcja" Foreground="White">
                     <MenuItem Header="Wyloguj"
-                      Command="{Binding ShowLoginCommand}"  Foreground="Black"/>
+                      Command="{Binding ShowLoginCommand}"  Foreground="White"/>
                     <Separator />
                     <MenuItem Header="Filtrowanie"
-                      Command="{Binding ShowFilteringCommand}" Foreground="Black"/>
+                      Command="{Binding ShowFilteringCommand}" Foreground="White"/>
                     <MenuItem Header="Dostępne pliki"
-                      Command="{Binding ShowFilesCommand}" Foreground="Black"/>
+                      Command="{Binding ShowFilesCommand}" Foreground="White"/>
                     <Separator />
                     <MenuItem Header="Zamknij"
-                      Command="{Binding ExitCommand}" Foreground="Black"/>
+                      Command="{Binding ExitCommand}" Foreground="White"/>
                 </MenuItem>
 
                 <MenuItem Header="Informacje" Foreground="White">
-                    <MenuItem Header="Autorzy" Foreground="Black"
+                    <MenuItem Header="Autorzy" Foreground="White"
                       Command="{Binding ShowAuthorsCommand}">
                         <MenuItem.Icon>
                             <Image Source="/Resources/Icons/info.png"

@@ -16,8 +16,10 @@ namespace CarBrowser.ViewModels
 
         private readonly DictionaryService _dictionaryService;
         private readonly VehicleSearchService _vehicleSearchService;
+        public string Username { get; private set; }
 
-        public string LoggedUser => "Logged in as: Michał";
+        public string LoggedUser => string.IsNullOrWhiteSpace(Username)
+            ? "Nie zalogowano" : $"Zalogowany: {Username}";
 
         public ObservableCollection<string> Voivodeship { get; } = new();
 
@@ -109,14 +111,14 @@ namespace CarBrowser.ViewModels
 
         public ICommand SearchCommand { get; }
 
-        public FilteringViewModel()
+        public FilteringViewModel(string username)
         {
+            Username = username; 
+
             _dictionaryService = new DictionaryService();
             _vehicleSearchService = new VehicleSearchService();
 
-
             SearchCommand = new AsyncRelayCommand(SearchAsync);
-
 
             LoadProvincesAsync();
         }

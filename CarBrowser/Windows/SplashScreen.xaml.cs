@@ -21,6 +21,7 @@ namespace CarBrowser.Windows
         private async void SplashScreen_Loaded(object sender, RoutedEventArgs e)
         {
             statusLabel.Content = "Sprawdzanie CarGate...";
+            await Task.Delay(500);
 
             bool carGateOk = await _availability.CheckCarGateAsync();
             if (!carGateOk)
@@ -44,7 +45,7 @@ namespace CarBrowser.Windows
             }
 
             statusLabel.Content = "CEPiK dostępny.";
-            await Task.Delay(500);
+            await Task.Delay(2000);
 
             var main = new MainWindow();
             main.Show();

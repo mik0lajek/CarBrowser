@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="260"/>
+            <ColumnDefinition Width="290"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="1.3*"/>
         </Grid.ColumnDefinitions>
@@ -25,31 +25,45 @@
 
                 <TextBlock Text="{Binding LoggedUser}" FontWeight="Bold" Margin="0 0 0 20"/>
 
-                <TextBlock Text="Wymagane" FontSize="16" FontWeight="Bold"/>
+                <TextBlock Text="WYMAGANE" FontSize="16" FontWeight="Bold"/>
 
-                <ComboBox ItemsSource="{Binding Voivodeship}"
-                          SelectedItem="{Binding SelectedVoivodeship}"
-                          Width="200"/>
+                <StackPanel Margin="0 10 0 0">
+                    <TextBlock Text="Województwo" FontWeight="Normal"/>
+                    <ComboBox ItemsSource="{Binding Voivodeship}"
+                              SelectedItem="{Binding SelectedVoivodeship}"
+                              Width="240" Height="30"/>
+                </StackPanel>
 
-                <DatePicker SelectedDate="{Binding DateFrom}"
-                            DisplayDateStart="{Binding MinAllowedDate, Mode=OneWay}"
-                            DisplayDateEnd="{Binding MaxAllowedDate, Mode=OneWay}"
-                            Width="200" Margin="0 10 0 0"/>
+                <StackPanel Margin="0 10 0 0">
+                    <TextBlock Text="Data od:" FontWeight="Normal"/>
+                    <DatePicker SelectedDate="{Binding DateFrom}"
+                             DisplayDateStart="{Binding MinAllowedDate, Mode=OneWay}"
+                             DisplayDateEnd="{Binding MaxAllowedDate, Mode=OneWay}"
+                             Width="240" Height="30"/>
+                </StackPanel>
 
-                <TextBlock Text="Opcjonalne" FontSize="16" FontWeight="Bold" Margin="0 20 0 0"/>
 
-                <DatePicker SelectedDate="{Binding DateTo}"
+                <TextBlock Text="OPCJONALNE" FontSize="16" FontWeight="Bold" Margin="0 20 0 0"/>
+
+                <StackPanel Margin="0 10 0 0">
+                    <TextBlock Text="Data do:" FontWeight="Normal"/>
+                    <DatePicker SelectedDate="{Binding DateTo}"
                             DisplayDateStart="{Binding DateFrom, TargetNullValue={x:Static sys:DateTime.Today}}"
                             DisplayDateEnd="{Binding MaxAllowedDate, Mode=OneWay}"
-                            Width="200" Margin="0 10 0 0"/>
+                            Width="240" Height="30"/>
+                </StackPanel>
 
-                <CheckBox Content="Registered"
+
+                <CheckBox Content="Zarejestrowany"
                           IsChecked="{Binding IsRegistered}"
                           Margin="0 10 0 0"/>
 
-                <ComboBox ItemsSource="{Binding PaginationOptions}"
-                          SelectedItem="{Binding SelectedPagination}"
-                          Width="200" Margin="0 10 0 0"/>
+                <Canvas Margin="0 10 0 0" Height="41" Width="270">
+                    <TextBlock Text="Wyświetlane wyniki" FontWeight="Normal" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Top="17"/>
+                    <ComboBox ItemsSource="{Binding PaginationOptions}"
+                        SelectedItem="{Binding SelectedPagination}"
+                        Width="65" Canvas.Left="120" Canvas.Top="12" HorizontalAlignment="Left"/>
+                </Canvas>
 
                 <Button Content="{Binding IsSearching, Converter={StaticResource BoolToTextFilteringConverter}}"
                         Command="{Binding SearchCommand}"
