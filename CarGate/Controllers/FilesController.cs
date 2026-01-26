@@ -24,4 +24,16 @@ public class FilesController : ControllerBase
 
         return Ok(result);
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetFileMetadata(string id, CancellationToken ct)
+    {
+        var result = await _service.GetFileDetailsAsync(id, ct);
+
+        if (result == null)
+            return NotFound(new { message = $"Details for file {id} not available" });
+
+        return Ok(result);
+    }
+
 }

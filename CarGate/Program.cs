@@ -8,6 +8,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 builder.Services.Configure<CepikEndpoints>(
     builder.Configuration.GetSection("Cepik:Endpoints"));
 
@@ -22,6 +23,7 @@ builder.Services.AddScoped<VoivodeshipDictionaryService>();
 builder.Services.AddScoped<FilteringService>();
 builder.Services.AddScoped<FilesService>();
 builder.Services.AddScoped<VehicleDetailsService>();
+
 
 var app = builder.Build();
 

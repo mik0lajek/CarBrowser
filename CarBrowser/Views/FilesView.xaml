@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="CarBrowser.Views.FilesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:tools="clr-namespace:CarBrowser.Tools">
+
+    <UserControl.Resources>
+        <tools:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
+        <tools:InverseBoolConverter x:Key="InverseBool"/>
+        <tools:BoolToTextFilesConverter x:Key="BoolToTextFiles"/>
+    </UserControl.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.Row="0"
+                 Text="{Binding DetailsText, Mode=OneWay}"
+                 IsReadOnly="True"
+                 TextWrapping="Wrap"
+                 AcceptsReturn="True"
+                 VerticalScrollBarVisibility="Auto"
+                 HorizontalScrollBarVisibility="Auto"
+                 FontFamily="Consolas"
+                 FontSize="12"
+                 VerticalAlignment="Stretch"
+                 HorizontalAlignment="Stretch"/>
+
+
+        <ComboBox Grid.Row="1"
+                  ItemsSource="{Binding AvailableFiles}"
+                  SelectedItem="{Binding SelectedFile}"
+                  DisplayMemberPath="Name"
+                  Width="450"
+                  Margin="0 20 0 20"/>
+
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Left"
+                    Margin="0 0 0 10">
+
+            <Grid Width="200" Height="40" Margin="0 0 20 0">
+                <Button Content="{Binding IsMetadataLoading,
+                                          Converter={StaticResource BoolToTextFiles},
+                                          ConverterParameter='Pobierz metadane|Pobieranie...'}"
+                        Command="{Binding DownloadMetadataCommand}"
+                        IsEnabled="{Binding IsMetadataLoading, Converter={StaticResource InverseBool}}"
+                        Visibility="{Binding IsMetadataLoading, Converter={StaticResource BoolToVisibility}, ConverterParameter=Invert}"/>
+
+                <Border Background="#EEE"
+                        CornerRadius="4"
+                        Visibility="{Binding IsMetadataLoading, Converter={StaticResource BoolToVisibility}}">
+                    <TextBlock Text="Pobieranie..."
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontWeight="Bold"/>
+                </Border>
+            </Grid>
+
+            <Grid Width="200" Height="40">
+                <Button Content="Pobierz plik"
+                        Command="{Binding DownloadFileCommand}"
+                        IsEnabled="{Binding IsFileDownloading, Converter={StaticResource InverseBool}}"
+                        Visibility="{Binding IsFileDownloading, Converter={StaticResource BoolToVisibility}, ConverterParameter=Invert}"/>
+
+                <Border Background="#EEE"
+                        CornerRadius="4"
+                        Visibility="{Binding IsFileDownloading, Converter={StaticResource BoolToVisibility}}">
+                    <TextBlock Text="Pobieranie pliku..."
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontWeight="Bold"/>
+                </Border>
+            </Grid>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

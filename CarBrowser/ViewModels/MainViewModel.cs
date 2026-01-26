@@ -20,13 +20,11 @@ namespace CarBrowser.ViewModels
 
         public MainViewModel()
         {
-            // Komendy menu
             ShowLoginCommand = new RelayCommand(() => ShowLogin());
             ShowFilteringCommand = new RelayCommand(() => ShowFiltering());
             ShowFilesCommand = new RelayCommand(() => ShowFiles());
             ExitCommand = new RelayCommand(() => Application.Current.Shutdown());
 
-            // Start od logowania
             ShowLogin();
         }
 
@@ -45,10 +43,8 @@ namespace CarBrowser.ViewModels
             MainContent = new FilesViewModel();
         }
 
-        // Callback wywoływany przez LoginViewModel
         private void OnLoginSuccess(string username)
         {
-            // Można przechować username
             ShowFiltering();
         }
     }

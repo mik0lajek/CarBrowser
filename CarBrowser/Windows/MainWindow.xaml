@@ -5,49 +5,62 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:CarBrowser.Views"
         xmlns:viewModels="clr-namespace:CarBrowser.ViewModels"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="CarBrowser"
         Height="600"
         Width="1000"
-        WindowStartupLocation="CenterScreen">
-
+        WindowStartupLocation="CenterScreen"
+        Style="{StaticResource MaterialDesignWindow}">
 
     <DockPanel>
-        <Menu DockPanel.Dock="Top" Height="30">
-            <MenuItem Header="Akcja" VerticalAlignment="Center" Height="30">
-                <MenuItem Header="Wyloguj"
-                          Command="{Binding ShowLoginCommand}" />
-                <Separator />
-                <MenuItem Header="Filtrowanie"
-                          Command="{Binding ShowFilteringCommand}" />
-                <MenuItem Header="Dostępne pliki"
-                          Command="{Binding ShowFilesCommand}" />
-                <Separator />
-                <MenuItem Header="Zamknij"
-                          Command="{Binding ExitCommand}" />
-            </MenuItem>
 
-            <MenuItem Header="Informacje">
-                <MenuItem Header="Autorzy"
-                          Command="{Binding ShowAuthorsCommand}"> 
-                    <MenuItem.Icon>
-                        <Image Source="/Resources/Icons/info.png" 
-                               Width="16" 
-                               Height="16"/>
-                    </MenuItem.Icon>
+        <materialDesign:ColorZone Mode="PrimaryMid" DockPanel.Dock="Top">
+    <Menu Background="Transparent"
+          FontSize="13"
+          Padding="2 0">
+
+
+                <MenuItem Header="Akcja" Foreground="White">
+                    <MenuItem Header="Wyloguj"
+                      Command="{Binding ShowLoginCommand}"  Foreground="Black"/>
+                    <Separator />
+                    <MenuItem Header="Filtrowanie"
+                      Command="{Binding ShowFilteringCommand}" Foreground="Black"/>
+                    <MenuItem Header="Dostępne pliki"
+                      Command="{Binding ShowFilesCommand}" Foreground="Black"/>
+                    <Separator />
+                    <MenuItem Header="Zamknij"
+                      Command="{Binding ExitCommand}" Foreground="Black"/>
                 </MenuItem>
-            </MenuItem>
-        </Menu>
 
-        <ContentControl Content="{Binding MainContent}">
-            <ContentControl.Resources>
-                <DataTemplate DataType="{x:Type viewModels:LoginViewModel}">
-                    <views:LoginView />
-                </DataTemplate>
-            </ContentControl.Resources>
-        </ContentControl>
+                <MenuItem Header="Informacje" Foreground="White">
+                    <MenuItem Header="Autorzy" Foreground="Black"
+                      Command="{Binding ShowAuthorsCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Icons/info.png"
+                           Width="16"
+                           Height="16"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
 
+            </Menu>
+        </materialDesign:ColorZone>
+
+
+        <Border Background="{DynamicResource MaterialDesignPaper}"
+                Padding="16">
+
+            <ContentControl Content="{Binding MainContent}">
+                <ContentControl.Resources>
+                    <DataTemplate DataType="{x:Type viewModels:LoginViewModel}">
+                        <views:LoginView />
+                    </DataTemplate>
+                </ContentControl.Resources>
+            </ContentControl>
+
+        </Border>
 
     </DockPanel>
 </Window>
-
