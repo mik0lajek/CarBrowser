@@ -25,7 +25,7 @@
 
                 <TextBlock Text="{Binding LoggedUser}" FontWeight="Bold" Margin="0 0 0 20"/>
 
-                <TextBlock Text="Wymagane" FontSize="16" FontWeight="Bold" Margin="0 0 0 20"/>
+                <TextBlock Text="WYMAGANE" FontSize="16" FontWeight="Bold" Margin="0 0 0 20"/>
 
                 <StackPanel Margin="0 10 0 0">
                     <TextBlock Text="Województwo" FontWeight="Normal"/>
@@ -41,7 +41,7 @@
                             Width="240" Margin="0 10 0 0"/>
                 </StackPanel>
 
-                <TextBlock Text="Opcjonalne" FontSize="16" FontWeight="Bold" Margin="0 20 0 20"/>
+                <TextBlock Text="OPCJONALNE" FontSize="16" FontWeight="Bold" Margin="0 20 0 20"/>
 
                 <StackPanel Margin="0 10 0 0">
                     <TextBlock Text="Data do:" FontWeight="Normal"/>
