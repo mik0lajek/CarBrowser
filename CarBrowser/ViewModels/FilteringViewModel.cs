@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace CarBrowser.ViewModels
@@ -45,8 +46,7 @@ namespace CarBrowser.ViewModels
         }
         private string? _selectedVoivodeship;
 
-        public DateTime MinAllowedDate => DateTime.Today.AddYears(-2); 
-        public DateTime MaxAllowedDate => DateTime.Today;
+
 
         public DateTime? DateFrom
         {
@@ -55,6 +55,7 @@ namespace CarBrowser.ViewModels
             {
                 _dateFrom = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(MaxAllowedDate));
             }
         }
         private DateTime? _dateFrom;
@@ -69,6 +70,15 @@ namespace CarBrowser.ViewModels
             }
         }
         private DateTime? _dateTo;
+
+
+        public DateTime MaxAllowedDateFrom => DateTime.Today;
+        public DateTime MaxAllowedDate =>
+            DateFrom.HasValue && DateFrom.Value.AddYears(2) < DateTime.Today
+            ? DateFrom.Value.AddYears(2)
+            : DateTime.Today;
+
+
 
         public bool IsRegistered
         {
@@ -140,7 +150,18 @@ namespace CarBrowser.ViewModels
             if (IsSearching)
                 return;
 
+            if(DateFrom.HasValue && !DateTo.HasValue)
+            {
+                if(DateFrom.Value < DateTime.Today.AddYears(-2))
+                {
+                    MessageBox.Show($"Jeśli wybierasz tylko date od, nie może być dalsza jak {DateTime.Today.AddYears(-2)}");
+                    return;
+                }
+            }
+
             IsSearching = true;
+            VehicleDetails.Clear();
+            SelectedVehicle = null;
 
             try
             {

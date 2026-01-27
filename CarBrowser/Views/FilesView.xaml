@@ -49,7 +49,7 @@
                         IsEnabled="{Binding IsMetadataLoading, Converter={StaticResource InverseBool}}"
                         Visibility="{Binding IsMetadataLoading, Converter={StaticResource BoolToVisibility}, ConverterParameter=Invert}"/>
 
-                <Border Background="#EEE"
+                <Border 
                         CornerRadius="4"
                         Visibility="{Binding IsMetadataLoading, Converter={StaticResource BoolToVisibility}}">
                     <TextBlock Text="Pobieranie..."
@@ -65,7 +65,7 @@
                         IsEnabled="{Binding IsFileDownloading, Converter={StaticResource InverseBool}}"
                         Visibility="{Binding IsFileDownloading, Converter={StaticResource BoolToVisibility}, ConverterParameter=Invert}"/>
 
-                <Border Background="#EEE"
+                <Border 
                         CornerRadius="4"
                         Visibility="{Binding IsFileDownloading, Converter={StaticResource BoolToVisibility}}">
                     <TextBlock Text="Pobieranie pliku..."

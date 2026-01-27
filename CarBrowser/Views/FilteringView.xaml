@@ -9,13 +9,13 @@
         <tools:InverseBoolConverter x:Key="InverseBoolConverter"/>
     </UserControl.Resources>
 
-    <Grid Margin="20">
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="290"/>
+            <ColumnDefinition Width="260"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="1.3*"/>
         </Grid.ColumnDefinitions>
@@ -25,7 +25,7 @@
 
                 <TextBlock Text="{Binding LoggedUser}" FontWeight="Bold" Margin="0 0 0 20"/>
 
-                <TextBlock Text="WYMAGANE" FontSize="16" FontWeight="Bold"/>
+                <TextBlock Text="Wymagane" FontSize="16" FontWeight="Bold" Margin="0 0 0 20"/>
 
                 <StackPanel Margin="0 10 0 0">
                     <TextBlock Text="Województwo" FontWeight="Normal"/>
@@ -37,24 +37,21 @@
                 <StackPanel Margin="0 10 0 0">
                     <TextBlock Text="Data od:" FontWeight="Normal"/>
                     <DatePicker SelectedDate="{Binding DateFrom}"
-                             DisplayDateStart="{Binding MinAllowedDate, Mode=OneWay}"
-                             DisplayDateEnd="{Binding MaxAllowedDate, Mode=OneWay}"
-                             Width="240" Height="30"/>
+                            DisplayDateEnd="{Binding DateTo, TargetNullValue={x:Static sys:DateTime.Today}}"
+                            Width="240" Margin="0 10 0 0"/>
                 </StackPanel>
 
-
-                <TextBlock Text="OPCJONALNE" FontSize="16" FontWeight="Bold" Margin="0 20 0 0"/>
+                <TextBlock Text="Opcjonalne" FontSize="16" FontWeight="Bold" Margin="0 20 0 20"/>
 
                 <StackPanel Margin="0 10 0 0">
                     <TextBlock Text="Data do:" FontWeight="Normal"/>
                     <DatePicker SelectedDate="{Binding DateTo}"
                             DisplayDateStart="{Binding DateFrom, TargetNullValue={x:Static sys:DateTime.Today}}"
                             DisplayDateEnd="{Binding MaxAllowedDate, Mode=OneWay}"
-                            Width="240" Height="30"/>
+                            Width="240" Margin="0 10 0 0"/>
                 </StackPanel>
 
-
-                <CheckBox Content="Zarejestrowany"
+                <CheckBox Content="Zarejestrowane"
                           IsChecked="{Binding IsRegistered}"
                           Margin="0 10 0 0"/>
 
@@ -62,13 +59,13 @@
                     <TextBlock Text="Wyświetlane wyniki" FontWeight="Normal" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Top="17"/>
                     <ComboBox ItemsSource="{Binding PaginationOptions}"
                         SelectedItem="{Binding SelectedPagination}"
-                        Width="65" Canvas.Left="120" Canvas.Top="12" HorizontalAlignment="Left"/>
+                        Width="66" Canvas.Left="156" Canvas.Top="12" HorizontalAlignment="Left"/>
                 </Canvas>
 
                 <Button Content="{Binding IsSearching, Converter={StaticResource BoolToTextFilteringConverter}}"
                         Command="{Binding SearchCommand}"
                         IsEnabled="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}"
-                        Width="200" Margin="0 20 0 0"/>
+                        Width="240" Margin="0 20 0 0"/>
 
             </StackPanel>
         </ScrollViewer>
